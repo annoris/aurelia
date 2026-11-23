@@ -20,7 +20,24 @@ A self-hosted business AI automation platform for SMBs and enterprise teams acro
 
 [**Live Interactive Sandbox**](https://annoris.github.io/aurelia/) · [**Unlock Full Source Vault (`annoris/aurelia-pro-source`)**](./SOURCE_ACCESS.md) · [Visual Walkthrough](#visual-walkthrough) · [Architecture](#how-it-works--architecture) · [Quickstart](#quickstart-browser-sandbox-local-development--docker) · [Documentation](#documentation-index) · [License](#license--third-party-notices)
 
+<br/>
+
+<img src="docs/screenshots/aurelia-demo.gif" alt="Aurelia AI Live Walkthrough Demo" width="900" />
+
 </div>
+
+---
+
+## Why Aurelia AI? (Aurelia vs. The Old Way)
+
+| Capability | **Aurelia AI (Self-Hosted)** | Cloud AI SaaS Suites | DIY RAG & Automation Scripts |
+|---|:---:|:---:|:---:|
+| **Data Ownership & Privacy** | **100% Self-Hosted (Prisma + Local Vector DB)** | Vendor cloud storage | Self-hosted |
+| **LLM Freedom (BYOK)** | **ChatGPT, Claude, Gemini, DeepSeek & Ollama** | Locked models + markup | Manual SDK glue |
+| **Grounded RAG + Citations** | **Workspace-isolated docs + inline chunk citations** | Black-box retrieval | Custom pipeline required |
+| **Visual Workflow + MCP Hub** | **Built-in node builder + MCP guardrails** | Per-seat add-on fees | None built-in |
+| **Built-In Local CRM** | **Leads, quotes, appointments & draft follow-ups** | Separate CRM subscription | None |
+| **Zero-Install Live Sandbox** | **[annoris.github.io/aurelia](https://annoris.github.io/aurelia/)** | Credit card trial | None |
 
 ---
 
@@ -399,3 +416,10 @@ If **Aurelia AI** helps your team automate document-grounded workflows on your o
 
 - **License:** Distributed under the [**Commercial & Sponsorware Source-Gated License (On-Chain Solana Treasury Edition)**](LICENSE) — `Copyright (c) 2026 Aurelia AI`.
 - **Third-Party Attribution:** Aurelia AI incorporates adapted open-source components originally created by [AnythingLLM / Mintplex Labs Inc.](https://github.com/Mintplex-Labs/anything-llm). All original MIT copyright and permission notices are preserved in [**THIRD_PARTY_NOTICES.md**](THIRD_PARTY_NOTICES.md).
+
+---
+
+## Companion Projects
+
+- **[Aetheris (`annoris/aetheris`)](https://github.com/annoris/aetheris)** — Local-first AI Agents & Automation Control Plane (77 specialized agents, 328 skills, MCP manager, Prompt Workbench & 1-click Bundle Builder) · [Live Demo](https://annoris.github.io/aetheris/)
+- **[Tabvento (`annoris/tabvento`)](https://github.com/annoris/tabvento)** — Local AI Browser Automation Dashboard built on Browser Use with BYOK (ChatGPT, Claude, Gemini, DeepSeek, Ollama) & SQLite history · [Live Demo](https://annoris.github.io/tabvento/)
