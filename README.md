@@ -10,7 +10,9 @@
 
 A self-hosted business AI automation platform for SMBs and enterprise teams across sales proposals, 24/7 customer support, clinic and appointment scheduling, operations SOPs, e-commerce, agencies, and technical workflows. Explore the live interactive sandbox on GitHub Pages or deploy the complete React 18 + Express + Prisma + Document Collector stack on your own infrastructure.
 
-[![Live Interactive Sandbox](https://img.shields.io/badge/Live_Interactive_Sandbox-GitHub_Pages-0f766e?style=flat-square&logo=githubpages&logoColor=2dd4bf)](https://annoris.github.io/aurelia/)
+[![Launch Live Sandbox](https://img.shields.io/badge/%F0%9F%9A%80_LIVE_INTERACTIVE_SANDBOX-annoris.github.io%2Faurelia-0f766e?style=for-the-badge&logo=githubpages&logoColor=2dd4bf&labelColor=0b1120)](https://annoris.github.io/aurelia/)
+<br/>
+
 [![GitHub Stars](https://img.shields.io/github/stars/annoris/aurelia?style=flat-square&logo=github&color=0f766e&labelColor=0b1120)](https://github.com/annoris/aurelia/stargazers)
 [![Sponsor via Solana](https://img.shields.io/badge/Sponsor_via_Solana-3HvUMC...fdzvBdm-14F195?style=flat-square&logo=solana&logoColor=0b1120)](./SPONSORS.md)
 [![Node >=18](https://img.shields.io/badge/Node-%3E%3D18_(v24_pinned)-0b1120?style=flat-square&logo=nodedotjs&logoColor=2dd4bf)](#how-it-works--architecture)
@@ -417,3 +419,32 @@ If **Aurelia AI** helps your team automate document-grounded workflows on your o
 
 - **[Aetheris (`annoris/aetheris`)](https://github.com/annoris/aetheris)** — Local-first AI Agents & Automation Control Plane (77 specialized agents, 328 skills, MCP manager, Prompt Workbench & 1-click Bundle Builder) · [Live Demo](https://annoris.github.io/aetheris/)
 - **[Tabvento (`annoris/tabvento`)](https://github.com/annoris/tabvento)** — Local AI Browser Automation Dashboard built on Browser Use with BYOK (ChatGPT, Claude, Gemini, DeepSeek, Ollama) & SQLite history · [Live Demo](https://annoris.github.io/tabvento/)
+
+---
+
+## 🌐 Explore the JAP INTERNATIONAL & Annoris Ecosystem
+
+Built by **JAP INTERNATIONAL** — Local-First AI Automation Platforms for Small & Medium Businesses (SMBs), agencies, clinics, e-commerce, and enterprise teams, alongside 60 FPS Creative Web Engineering showcases. Every project below includes an instant **Live Demo (zero login required)**.
+
+### 🤖 AI & Local-First Business Automation
+| Project | What It Solves | Stack | Live Demo |
+| :--- | :--- | :--- | :---: |
+| [**`aetheris`**](https://github.com/annoris/aetheris) | 77 AI Agents, 328 Skills & Local-First Automation Control Plane | Bun · Node · Ollama · MCP | [Live Demo ↗](https://annoris.github.io/aetheris/) |
+| **`aurelia`** *(You are here)* | Self-Hosted Business AI Automation, RAG, Workflows & Local CRM | React 18 · Express · Prisma | [Live Demo ↗](https://annoris.github.io/aurelia/) |
+| [**`lumenpitch`**](https://github.com/annoris/lumenpitch) | AI Presentation Studio & Multi-LLM Slide Generation Engine | Next.js 16 · FastAPI · Electron | [Live Demo ↗](https://annoris.github.io/lumenpitch/) |
+| [**`tabvento`**](https://github.com/annoris/tabvento) | Autonomous AI Browser Automation Dashboard (Local-First BYOK) | Python · Playwright · SQLite | [Live Demo ↗](https://annoris.github.io/tabvento/) |
+| [**`trading-bauhaus-journal`**](https://github.com/annoris/trading-bauhaus-journal) | AI Trading Journal with Claude/OpenAI Analyst & OHLC Replay | Next.js 15 · TypeScript · SQLite | [Live Demo ↗](https://annoris.github.io/trading-bauhaus-journal/) |
+
+### 🎨 Creative Engineering & 60 FPS Web Showcases
+| Project | Experience & Motion Engineering | Stack | Live Demo |
+| :--- | :--- | :--- | :---: |
+| [**`kairo`**](https://github.com/annoris/kairo) | 60 FPS Spatial Web: Navier-Stokes Fluid, GLSL Shaders & Rapier 3D | Next.js 14 · Three.js · GLSL | [Live Demo ↗](https://annoris.github.io/kairo/) |
+| [**`valence`**](https://github.com/annoris/valence) | Zero-Bundler 60 FPS Awwwards Agency Template (MIT) | HTML5 · CSS3 · GSAP · Lenis | [Live Demo ↗](https://annoris.github.io/valence/) |
+| [**`luma`**](https://github.com/annoris/luma) | Zero-Dependency Botanical Brand Experience + 106 BPM Web Audio Synth | HTML5 · CSS3 · Web Audio API | [Live Demo ↗](https://annoris.github.io/luma/) |
+| [**`valtor`**](https://github.com/annoris/valtor) | Luxury Automotive Digital Flagship — 60 FPS GSAP + SplitText | Vite · ES Modules · GSAP | [Live Demo ↗](https://annoris.github.io/valtor/) |
+| [**`solterra`**](https://github.com/annoris/solterra) | Luxury Desert Architecture Showcase — GSAP ScrollSmoother | React 19 · Vite 6 · Tailwind 4 | [Live Demo ↗](https://annoris.github.io/solterra/) |
+| [**`moxie`**](https://github.com/annoris/moxie) | Bold Social-First Creative Agency Experience — GSAP Inertia | Next.js 15 · React 19 · Lenis | [Live Demo ↗](https://annoris.github.io/moxie/) |
+| [**`kineta`**](https://github.com/annoris/kineta) | Locked-60fps Brutalist Editorial Showcase & Variable Font Physics | Vanilla JS · GSAP · Lenis | [Live Demo ↗](https://annoris.github.io/kineta/) |
+| [**`solmora`**](https://github.com/annoris/solmora) | Editorial Mediterranean E-Commerce Showcase (MIT, Zero-Deps) | HTML5 · CSS3 · Vanilla JS | [Live Demo ↗](https://annoris.github.io/solmora/) |
+
+> ⭐ **Enjoyed exploring this project?** Drop a **Star** on GitHub and check out the full portfolio at [**github.com/annoris**](https://github.com/annoris) — it helps other builders discover the ecosystem!
