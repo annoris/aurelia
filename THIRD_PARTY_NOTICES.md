@@ -28,4 +28,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
 
-This notice supplements the root [MIT License](LICENSE); it does not replace notices included in individual source files or other third-party license terms. Review dependency and asset licenses before redistribution.
+This notice supplements the root [Proprietary License](LICENSE); it does not replace notices included in individual source files or other third-party license terms. Review dependency and asset licenses before redistribution.

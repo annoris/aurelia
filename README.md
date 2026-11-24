@@ -12,13 +12,13 @@ A self-hosted business AI automation platform for SMBs and enterprise teams acro
 
 [![Live Interactive Sandbox](https://img.shields.io/badge/Live_Interactive_Sandbox-GitHub_Pages-0f766e?style=flat-square&logo=githubpages&logoColor=2dd4bf)](https://annoris.github.io/aurelia/)
 [![GitHub Stars](https://img.shields.io/github/stars/annoris/aurelia?style=flat-square&logo=github&color=0f766e&labelColor=0b1120)](https://github.com/annoris/aurelia/stargazers)
-[![Solana Unlock & Sponsorship](https://img.shields.io/badge/Solana_Unlock-3HvUMC...fdzvBdm-14F195?style=flat-square&logo=solana&logoColor=0b1120)](./SOURCE_ACCESS.md)
-[![Node >=18](https://img.shields.io/badge/Node-%3E%3D18_(v24_pinned)-0b1120?style=flat-square&logo=nodedotjs&logoColor=2dd4bf)](./SOURCE_ACCESS.md)
-[![React 18 + Express + Prisma](https://img.shields.io/badge/Stack-React_18_%2B_Express_%2B_Prisma-0b1120?style=flat-square&logo=react&logoColor=2dd4bf)](./SOURCE_ACCESS.md)
-[![Docker Ready](https://img.shields.io/badge/Docker-Compose_Ready-0b1120?style=flat-square&logo=docker&logoColor=2dd4bf)](./SOURCE_ACCESS.md)
-[![License: Commercial & Sponsorware](https://img.shields.io/badge/License-Solana_Sponsorware-0b1120?style=flat-square)](LICENSE)
+[![Sponsor via Solana](https://img.shields.io/badge/Sponsor_via_Solana-3HvUMC...fdzvBdm-14F195?style=flat-square&logo=solana&logoColor=0b1120)](./SPONSORS.md)
+[![Node >=18](https://img.shields.io/badge/Node-%3E%3D18_(v24_pinned)-0b1120?style=flat-square&logo=nodedotjs&logoColor=2dd4bf)](#how-it-works--architecture)
+[![React 18 + Express + Prisma](https://img.shields.io/badge/Stack-React_18_%2B_Express_%2B_Prisma-0b1120?style=flat-square&logo=react&logoColor=2dd4bf)](#how-it-works--architecture)
+[![Docker Ready](https://img.shields.io/badge/Docker-Compose_Ready-0b1120?style=flat-square&logo=docker&logoColor=2dd4bf)](#how-it-works--architecture)
+[![License: Proprietary / All Rights Reserved](https://img.shields.io/badge/License-Proprietary_%2F_All_Rights_Reserved-0b1120?style=flat-square)](LICENSE)
 
-[**Live Interactive Sandbox**](https://annoris.github.io/aurelia/) · [**Unlock Full Source Vault (`annoris/aurelia-pro-source`)**](./SOURCE_ACCESS.md) · [Visual Walkthrough](#visual-walkthrough) · [Architecture](#how-it-works--architecture) · [Quickstart](#quickstart-browser-sandbox-local-development--docker) · [Documentation](#documentation-index) · [License](#license--third-party-notices)
+[**Live Interactive Sandbox**](https://annoris.github.io/aurelia/) · [Visual Walkthrough](#visual-walkthrough) · [Architecture](#how-it-works--architecture) · [Quickstart](#quickstart-browser-sandbox-local-development--docker) · [Documentation](#documentation-index) · [License](#license--third-party-notices)
 
 <br/>
 
@@ -72,7 +72,7 @@ A self-hosted business AI automation platform for SMBs and enterprise teams acro
 - **Built-In Local CRM & Pipeline:** Manage multi-industry leads, pipeline stages, intake notes, appointments, quotes, and draft-only AI follow-up messages inside local Prisma storage without forcing external writeback.
 - **Business Connections for Google Drive & HubSpot:** Operator-reviewed, bounded manual imports let administrators browse authorized Drive folders into the document library or preview capped 25/50/100-contact HubSpot slices into the local CRM alongside channel bridges and an embeddable website chat widget.
 - **Multi-Provider LLM & Vector Store Routing:** Supports cloud APIs (OpenAI, Anthropic, Google Gemini, Azure OpenAI, Bedrock, Groq, Mistral, OpenRouter, and more) as well as local/private inference (Ollama, LM Studio, LocalAI, Lemonade) paired with LanceDB, Qdrant, Chroma, Pinecone, pgvector, Milvus, Weaviate, or Astra.
-- **Self-Hosted Privacy & Solana-Gated Sponsorware Vault (`annoris/aurelia-pro-source`):** Decoupled `frontend/`, `server/`, and `collector/` services run cleanly on Node.js or Docker Compose under our [Commercial & Sponsorware Source-Gated License](LICENSE) ([Unlock Full Source via Solana](./SOURCE_ACCESS.md)), with upstream attribution preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+- **Self-Hosted Privacy & Proprietary Architecture:** Decoupled `frontend/`, `server/`, and `collector/` services run cleanly on Node.js or Docker Compose under our [Proprietary / All Rights Reserved License](LICENSE), with upstream attribution preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ---
 
@@ -176,7 +176,7 @@ Every screenshot below was captured directly from the live rendered `site/` inte
 | `--accent` | `#2dd4bf` | `#0f766e` | Primary teal actions, active pills, citation highlights |
 | `--gold` | `#ddbf80` | `#a88443` | Enterprise Intelligence pills, sandbox banners, peak telemetry bar |
 
-> **Full App Theme Alignment:** The self-hosted React client (`frontend/src/index.css` — [Private Source Vault](./SOURCE_ACCESS.md)) shares the same `--font-ui` stack and navy/teal design system (`#0f172a` dark default / `#0f766e` primary action / `#2dd4bf` CTA), alongside light-theme overrides documented in [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md).
+> **Full App Theme Alignment:** The self-hosted React client (`frontend/src/index.css`) shares the same `--font-ui` stack and navy/teal design system (`#0f172a` dark default / `#0f766e` primary action / `#2dd4bf` CTA), alongside light-theme overrides documented in [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md).
 
 ### Typography & Accessibility Discipline
 
@@ -205,7 +205,7 @@ flowchart LR
 
 ### Capability Matrix
 
-| Capability | Verified Implementation & Scope ([Private Source Vault](./SOURCE_ACCESS.md)) |
+| Capability | Verified Implementation & Scope |
 | :--- | :--- |
 | **LLM Provider Routing** | Adapters in `server/utils/AiProviders/` including OpenAI, Anthropic, Google Gemini, Azure OpenAI, AWS Bedrock, Ollama, LM Studio, LocalAI, Groq, Mistral, DeepSeek, OpenRouter, Vertex AI, xAI, and Generic OpenAI. |
 | **Vector Databases & Embeddings** | Supports LanceDB (default embedded), Qdrant, Chroma, ChromaCloud, Pinecone, pgvector, Milvus, Zilliz, Weaviate, and Astra (`server/utils/vectorDbProviders/`) paired with 14 embedding adapters (`server/utils/EmbeddingEngines/`). |
@@ -221,27 +221,23 @@ flowchart LR
 ## Quickstart (Browser Sandbox, Local Development & Docker)
 
 > [!IMPORTANT]
-> **Solana-Gated Sponsorware Architecture (`annoris/aurelia-pro-source`):**
+> **Proprietary Source Code — All Rights Reserved:**
 > - **Live Interactive Browser Sandbox:** Anyone can explore the live 6-view interactive sandbox at **[https://annoris.github.io/aurelia/](https://annoris.github.io/aurelia/)** and inspect all 8 visual walkthrough sections, 3-tier architecture specifications, and integration docs right here in this public showcase repository.
-> - **Full Editable 3-Tier Source Vault:** The complete, unminified 3-tier platform (`frontend/`, `server/`, `collector/`, `docker/`, `scripts/`, and `site/`) is hosted inside the **Private Source Vault (`annoris/aurelia-pro-source`)** and unlocked immediately upon contributing via **Solana Mainnet (`3HvUMCUSSHEdtA35UuD4J7mbgpTxJ7LgT2X7GfdzvBdm`)** and submitting a **[🔓 Solana Source Code Unlock Request](https://github.com/annoris/aurelia/issues/new?template=source_unlock_request.md)**. See [`SOURCE_ACCESS.md`](./SOURCE_ACCESS.md) and [`PAYMENT.md`](./PAYMENT.md) for instant unlock instructions.
+> - **Full 3-Tier Source Code:** The underlying 3-tier platform (`frontend/`, `server/`, `collector/`, `docker/`, `scripts/`, and `site/`) is proprietary software (`All Rights Reserved`). Commercial licensing and private deployment access are available exclusively through a direct written agreement with the author. See [`LICENSE`](./LICENSE) for full terms.
 
 ### Option 1: Preview the Interactive Browser Sandbox (`Node >=18`, zero install)
 
 ```bash
-git clone https://github.com/annoris/aurelia-pro-source.git
-cd aurelia-pro-source
+# Requires authorized source access
 npm run pages:dev
 # Serves site/ locally at http://127.0.0.1:4176
 ```
 
 ### Option 2: Run the Full 3-Tier Stack Locally
 
-Requires **Node.js `>=18`** (the repository pins `v24.22.2` in `.nvmrc`) and **npm**.
+Requires **Node.js `>=18`** (the repository pins `v24.22.2` in `.nvmrc`) and **npm** (with authorized source access).
 
 ```bash
-git clone https://github.com/annoris/aurelia-pro-source.git
-cd aurelia-pro-source
-
 # 1. Install dependencies for each application
 npm --prefix server install
 npm --prefix collector install
@@ -264,11 +260,9 @@ npm run dev:local
 
 ### Option 3: Deploy with Docker Compose
 
-Requires **Docker** and **Docker Compose**.
+Requires **Docker** and **Docker Compose** (with authorized source access).
 
 ```bash
-git clone https://github.com/annoris/aurelia-pro-source.git
-cd aurelia-pro-source
 cp -n docker/.env.example docker/.env && docker compose -f docker/docker-compose.yml up -d --build
 # Serves bundled UI + API on http://localhost:3001 with persistent storage mounts
 ```
@@ -323,7 +317,7 @@ aurelia/
 ├── CODE_OF_CONDUCT.md             # Contributor Covenant v2.1
 ├── CONTRIBUTING.md                # Contributor setup, PR guidelines & connector criteria
 ├── SECURITY.md                    # Coordinated vulnerability disclosure & scope policy
-├── LICENSE                        # MIT License (Copyright (c) 2026 Aurelia AI)
+├── LICENSE                        # Proprietary / All Rights Reserved (Copyright (c) 2026 Aurelia AI)
 └── THIRD_PARTY_NOTICES.md         # Upstream MIT notices (Mintplex Labs Inc.)
 ```
 
@@ -358,7 +352,7 @@ npm run doctor
 
 ### Automated CI & GitHub Pages Workflows
 
-1. **Continuous Integration (`.github/workflows/ci.yml` — Private Source Vault):** Syntax-checks `scripts/*.mjs`, validates `site/` and `README.md` via `node scripts/validate-pages.mjs`, verifies shared dependency versions between `server` and `collector`, and checks all frontend locale files.
+1. **Continuous Integration (`.github/workflows/ci.yml`):** Syntax-checks `scripts/*.mjs`, validates `site/` and `README.md` via `node scripts/validate-pages.mjs`, verifies shared dependency versions between `server` and `collector`, and checks all frontend locale files.
 2. **Automated GitHub Pages (`origin/gh-pages`):** Publishes the protected interactive sandbox directly to **`https://annoris.github.io/aurelia/`**.
 
 ---
@@ -372,7 +366,7 @@ npm run doctor
 
 ## Documentation Index
 
-- **Source Code Unlock & Commercial Licensing:** [Source Code Unlock Guide](SOURCE_ACCESS.md) · [Commercial Licensing & Solana Treasury (`3HvUMC...fdzvBdm`)](PAYMENT.md) · [Hall of Patrons](SPONSORS.md)
+- **Licensing & Sponsorship:** [Proprietary License](LICENSE) · [Hall of Patrons & Sponsorship](SPONSORS.md)
 - **Architecture & System Specs:** [Architecture & Module Boundaries](docs/ARCHITECTURE.md) · [Design System Contract](docs/DESIGN_SYSTEM.md)
 - **Setup & Deployment:** [Local Development Guide](docs/DEVELOPMENT.md) · [Bare-Metal Production Guide](BARE_METAL.md)
 - **Integrations & Visuals:** [Business Connections & Connectors](docs/INTEGRATIONS.md) · [Screenshot Suite Guide](docs/screenshots/README.md) · [GitHub Growth & Release Checklist](docs/GITHUB_GROWTH_GUIDE.md)
@@ -380,9 +374,9 @@ npm run doctor
 
 ---
 
-## 💎 Solana QR Payment, Source Vault Unlock & Commercial Licensing
+## 💎 Sponsorship & Commercial Licensing
 
-To unlock the **Full Editable 3-Tier Source Code Vault (`annoris/aurelia-pro-source`)**, acquire a **Commercial Agency / Enterprise White-Label License**, or sponsor ongoing development, simply **scan the official Solana QR code below** with your phone or wallet app:
+To sponsor ongoing development of **Aurelia AI**, scan the official Solana QR code below with your wallet app. For commercial licensing or enterprise deployment agreements, contact the author directly (see [`LICENSE`](LICENSE)).
 
 <div align="center">
 
@@ -397,7 +391,7 @@ To unlock the **Full Editable 3-Tier Source Code Vault (`annoris/aurelia-pro-sou
 ```
 
 <p>
-  <strong>1-Step Payment:</strong> Scan the QR code above with Phantom, Solflare, Backpack, Coinbase, Binance, or Trust Wallet (or copy the Solana address above) to send <strong>SOL</strong> directly, then submit a <a href="https://github.com/annoris/aurelia/issues/new?template=source_unlock_request.md"><strong>🔓 Solana Source Code Unlock Request</strong></a>.
+  <strong>Voluntary Sponsorship:</strong> Scan the QR code above with Phantom, Solflare, Backpack, Coinbase, Binance, or Trust Wallet to support ongoing research and showcase maintenance. See <a href="SPONSORS.md"><strong>SPONSORS.md</strong></a> for patron details.
 </p>
 
 </div>
@@ -414,7 +408,7 @@ If **Aurelia AI** helps your team automate document-grounded workflows on your o
 
 ## License & Third-Party Notices
 
-- **License:** Distributed under the [**Commercial & Sponsorware Source-Gated License (On-Chain Solana Treasury Edition)**](LICENSE) — `Copyright (c) 2026 Aurelia AI`.
+- **License:** Distributed under the [**Proprietary / All Rights Reserved License**](LICENSE) — `Copyright (c) 2026 Aurelia AI`. Commercial use and source licensing are available exclusively through a direct written agreement with the author.
 - **Third-Party Attribution:** Aurelia AI incorporates adapted open-source components originally created by [AnythingLLM / Mintplex Labs Inc.](https://github.com/Mintplex-Labs/anything-llm). All original MIT copyright and permission notices are preserved in [**THIRD_PARTY_NOTICES.md**](THIRD_PARTY_NOTICES.md).
 
 ---

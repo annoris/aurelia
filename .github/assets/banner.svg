@@ -67,7 +67,7 @@
 
   <!-- Bottom Meta Strip -->
   <line x1="64" y1="298" x2="796" y2="298" stroke="#334155" stroke-opacity="0.65"/>
-  <text x="64" y="324" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" letter-spacing="1.2">REACT CLIENT :3000  ·  EXPRESS + PRISMA API :3001  ·  COLLECTOR :8888  ·  MIT LICENSE</text>
+  <text x="64" y="324" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" letter-spacing="1.2">REACT CLIENT :3000  ·  EXPRESS + PRISMA API :3001  ·  COLLECTOR :8888  ·  PROPRIETARY LICENSE</text>
 
   <!-- Right-Hand Telemetry & Agent Flow Node Motif -->
   <g transform="translate(848 56)">

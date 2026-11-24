@@ -121,4 +121,4 @@ We welcome engineers who use AI coding tools thoughtfully to accelerate design, 
 
 ## License
 
-By contributing to **annoris/aurelia**, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+By contributing to **annoris/aurelia**, you agree that your contributions will be governed by the repository [Proprietary License](LICENSE).
