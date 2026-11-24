@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="theme-color" content="#07080D" />
+		<meta
+			name="description"
+			content="Aurelia AI v1.19.0: put your business knowledge to work with full control — self-hosted RAG workspaces, 5-node visual workflows, MCP hub, and local CRM."
+		/>
+		<title>Aurelia AI — Put your business knowledge to work</title>
+		<link rel="icon" type="image/svg+xml" href="./mark.svg" />
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
+	<body>
+		<a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
+		<aside
+			class="sidebar"
+			aria-label="Main navigation"
+			data-i18n-aria-label="sidebar.ariaLabel"
+		>
+			<a
+				href="#inicio"
+				class="brand"
+				aria-label="Aurelia AI home"
+				data-i18n-aria-label="brand.ariaLabel"
+				><span>aurelia<span class="brand-dot">.</span></span></a
+			>
+			<div class="nav-group-label" data-i18n="sidebar.workspace">
+				WORKSPACE
+			</div>
+			<nav aria-label="Workspace navigation">
+				<a
+					href="#inicio"
+					data-view="inicio"
+					class="nav-link active"
+					><span data-icon="grid"></span>Overview<span class="nav-key"
+						>01</span
+					></a
+				><a
+					href="#chat"
+					data-view="chat"
+					class="nav-link"
+					><span data-icon="chat"></span>AI Chat &amp; Docs<span class="nav-pill"
+						>RAG</span
+					></a
+				><a
+					href="#crm"
+					data-view="crm"
+					class="nav-link"
+					><span data-icon="briefcase"></span>CRM &amp; Sales<span class="count"
+						>4</span
+					></a
+				><a
+					href="#conexiones"
+					data-view="conexiones"
+					class="nav-link"
+					><span data-icon="sliders"></span>Channels &amp; Gateways</a
+				>
+			</nav>
+			<div class="nav-group-label">BUILD &amp; CONNECT</div>
+			<nav aria-label="Build and Connect navigation">
+				<a
+					href="#agents"
+					data-view="agents"
+					class="nav-link"
+					><span data-icon="cpu"></span>AI Agents<span class="nav-pill teal"
+						>MCP</span
+					></a
+				><a
+					href="#misiones"
+					data-view="misiones"
+					class="nav-link"
+					><span data-icon="layers"></span>Visual Workflows<span
+						class="count"
+						id="mission-count"
+						>0</span
+					></a
+				>
+			</nav>
+			<div class="ws-section">
+				<div class="ws-header">
+					<span class="nav-group-label">YOUR WORKSPACES</span>
+					<button
+						type="button"
+						id="ws-add-btn"
+						class="ws-add-btn"
+						title="New workspace"
+						aria-label="Create new workspace"
+					>
+						+
+					</button>
+				</div>
+				<div class="ws-search">
+					<span data-icon="search"></span>
+					<input
+						type="search"
+						id="ws-search-input"
+						placeholder="Search workspaces..."
+						aria-label="Search workspaces"
+						autocomplete="off"
+					/>
+				</div>
+				<div class="ws-list" id="ws-list">
+					<div class="ws-group" data-ws-group="support">
+						<button type="button" class="ws-item is-active" data-ws="support">
+							<span class="ws-dot"></span>
+							<span class="ws-name">Customer Support 24/7</span>
+							<span class="ws-badge">2</span>
+						</button>
+						<div class="ws-threads">
+							<button type="button" class="ws-thread is-active" data-ws="support" data-thread="general">
+								<span>#</span> General Inquiries
+							</button>
+							<button type="button" class="ws-thread" data-ws="support" data-thread="returns">
+								<span>#</span> Return Policy Audit
+							</button>
+						</div>
+					</div>
+					<div class="ws-group" data-ws-group="sales">
+						<button type="button" class="ws-item" data-ws="sales">
+							<span class="ws-dot"></span>
+							<span class="ws-name">Sales &amp; Proposals</span>
+						</button>
+					</div>
+					<div class="ws-group" data-ws-group="clinic">
+						<button type="button" class="ws-item" data-ws="clinic">
+							<span class="ws-dot"></span>
+							<span class="ws-name">Clinic &amp; Booking</span>
+						</button>
+					</div>
+					<div class="ws-group" data-ws-group="ops">
+						<button type="button" class="ws-item" data-ws="ops">
+							<span class="ws-dot"></span>
+							<span class="ws-name">Operations &amp; SOPs</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="sidebar-bottom">
+				<a
+					href="#guia"
+					class="nav-link"
+					data-view="guia"
+					data-i18n="nav.guia"
+					><span data-icon="book"></span>Getting started<span>↗</span></a
+				>
+				<div class="local-profile">
+					<div class="avatar">A</div>
+					<div>
+						<strong data-i18n="sidebar.localTitle">Local workspace</strong
+						><span data-i18n="sidebar.localSubtitle">Local workspace · v1.19</span>
+					</div>
+					<span class="local-dot"></span>
+				</div>
+			</div>
+		</aside>
+		<div class="app-shell">
+			<header class="topbar">
+				<button
+					id="menu-toggle"
+					class="icon-button mobile-only"
+					aria-label="Open menu"
+					data-i18n-aria-label="menu.open"
+					aria-expanded="false"
+				>
+					<span data-icon="menu"></span>
+				</button>
+				<div class="breadcrumb" data-i18n="topbar.workspace">
+					Workspace <span>/</span>
+					<strong id="breadcrumb-title" data-i18n="breadcrumb.inicio"
+						>Overview</strong
+					>
+				</div>
+				<div class="top-actions">
+					<span
+						class="connection-badge"
+						id="server-badge"
+						data-i18n="server.connecting"
+						><i></i>Connecting</span
+					><button
+						class="lang-toggle"
+						id="lang-toggle"
+						type="button"
+						aria-label="Switch language to Spanish"
+						data-i18n-aria-label="lang.switchToEs"
+						data-lang="en"
+					>
+						<span class="lang-opt" data-lang-opt="es">ES</span
+						><span class="lang-sep">/</span
+						><span class="lang-opt active" data-lang-opt="en">EN</span></button
+					><button
+						class="icon-button"
+						id="motion-toggle"
+						aria-label="Pause animations"
+						data-i18n-aria-label="motion.pause"
+						aria-pressed="false"
+					>
+						<span data-icon="sparkles"></span></button
+					><a class="source-link" href="#guia"
+						><span data-icon="book"></span
+						><span data-i18n="topbar.guide">Aurelia Guide</span
+						><span>↗</span></a
+					>
+				</div>
+			</header>
+			<main id="main" tabindex="-1">
+				<section id="view-inicio" class="view">
+					<div class="page-intro">
+						<span class="eyebrow" data-i18n="hero.eyebrow"
+							><span class="mini-star">✳</span> SELF-HOSTED ENTERPRISE INTELLIGENCE</span
+						><span class="edition" data-i18n="hero.edition"
+							>AURELIA AI / v1.19.0</span
+						>
+					</div>
+					<section class="hero" aria-labelledby="hero-title">
+						<div class="hero-copy">
+							<div class="hero-kicker" data-i18n="hero.kicker">
+								<span></span> Your business knowledge. Zero cloud lock-in.
+							</div>
+							<h1 id="hero-title" data-i18n-html="hero.title">
+								Put your business knowledge<br /><span>to work with full control.</span>
+							</h1>
+							<p data-i18n-html="hero.subtitle">
+								Self-hosted RAG workspaces, 5-node visual workflows,<br />MCP guardrails &amp; local CRM for SMBs,<br />agencies, clinics &amp; enterprise teams.
+							</p>
+							<div class="hero-actions">
+								<button
+									class="button primary"
+									id="hero-new"
+									data-i18n="hero.newMission"
+								>
+									Run an AI workflow <span data-icon="arrow"></span></button
+								><button
+									class="button text-button"
+									id="hero-demo"
+									data-i18n="hero.demo"
+								>
+									<span class="play-icon">▶</span> Run live RAG demo
+								</button>
+							</div>
+							<div class="hero-footnote" data-i18n="hero.footnote">
+								<span class="mini-path">↳</span> 3-Tier local stack (:3000 / :3001 / :8888). 100% local data ownership.
+							</div>
+						</div>
+						<div class="hero-art" aria-hidden="true">
+							<div class="art-grid"></div>
+							<div class="orbit orbit-one"></div>
+							<div class="orbit orbit-two"></div>
+							<svg class="wind-path" viewBox="0 0 560 390">
+								<path
+									class="wind-shadow"
+									d="M-30 295C80 295 70 95 195 103S290 340 401 244S425 46 600 75"
+								/>
+								<path
+									class="wind-line"
+									d="M-30 295C80 295 70 95 195 103S290 340 401 244S425 46 600 75"
+								/>
+								<path
+									class="wind-thread"
+									d="M-30 310C80 310 70 110 195 118S290 355 401 259S425 61 600 90"
+								/>
+							</svg>
+							<div class="floating-tab tab-back">
+								<div class="art-browser-bar">
+									<i></i><i></i><i></i
+									><span data-i18n="art.explore">rag workspace · lancedb</span>
+								</div>
+								<div class="skeleton-line wide"></div>
+								<div class="skeleton-line"></div>
+								<div class="art-thumbnails"><i></i><i></i><i></i></div>
+							</div>
+							<div class="floating-tab tab-front">
+								<div class="art-browser-bar">
+									<i></i><i></i><i></i
+									><span data-i18n="art.ideaInMotion"
+										>5-node workflow · mcp</span
+									><b>↗</b>
+								</div>
+								<div class="mini-search" data-i18n="art.search">
+									<span>⌕</span> Query SOPs &amp; CRM with strict citations <b>↵</b>
+								</div>
+								<div class="art-result">
+									<div class="result-symbol">↗</div>
+									<div>
+										<span data-i18n="art.goalFound">CITATION VERIFIED · 0.96</span
+										><strong data-i18n="art.tabsToAnswers"
+											>Trigger → RAG → MCP → CRM</strong
+										>
+										<div class="skeleton-line"></div>
+									</div>
+								</div>
+								<div class="art-progress">
+									<span></span><span></span><span></span><i>05 / 05</i>
+								</div>
+							</div>
+							<div class="floating-chip chip-top" data-i18n="art.chipTop">
+								<span>✳</span> MCP Guardrails Active
+							</div>
+							<div class="floating-chip chip-bottom" data-i18n="art.chipBottom">
+								<span class="check-circle">✓</span> 100% Local Data Ownership
+							</div>
+							<div class="art-coordinate" data-i18n="art.coordinate">
+								FRONTEND :3000 &nbsp; / &nbsp; API :3001 &nbsp; / &nbsp; COLLECTOR :8888
+							</div>
+						</div>
+					</section>
+					<section class="composer-section" aria-labelledby="composer-title">
+						<div class="section-heading">
+							<div>
+								<span class="section-index">01 /</span>
+								<h2 id="composer-title" data-i18n="composer.title">
+									¿Qué quieres poner en marcha?
+								</h2>
+							</div>
+							<span class="small-label" data-i18n="composer.badge"
+								>EMPIEZA CON UNA IDEA</span
+							>
+						</div>
+						<form id="mission-form" class="composer">
+							<label
+								class="sr-only"
+								for="task-input"
+								data-i18n="composer.taskLabel"
+								>Describe tu misión</label
+							><textarea
+								id="task-input"
+								maxlength="4000"
+								rows="2"
+								placeholder="Encuentra, compara, investiga… escribe tu próxima misión."
+								data-i18n-placeholder="composer.placeholder"
+								required
+							></textarea>
+							<div class="composer-bottom">
+								<div class="composer-options">
+									<label class="mode-select"
+										><span data-icon="orbit"></span
+										><select
+											id="mode-select"
+											aria-label="Modo de ejecución"
+											data-i18n-aria-label="composer.modeAria"
+										>
+											<option value="demo" data-i18n="composer.modeDemo">
+												Demo simulada
+											</option>
+											<option value="live" data-i18n="composer.modeLive">
+												Navegador real
+											</option></select
+										><span>⌄</span></label
+									><span
+										class="composer-hint"
+										id="mode-hint"
+										data-i18n="composer.hintDemo"
+										>Explora el recorrido sin usar claves ni IA.</span
+									>
+								</div>
+								<button
+									class="button primary"
+									id="submit-mission"
+									type="submit"
+									data-i18n="composer.submitDemo"
+								>
+									Iniciar demo <span data-icon="arrow"></span>
+								</button>
+							</div>
+						</form>
+						<details class="example-library" id="example-library">
+							<summary data-i18n="examples.title">Explore 24 example missions</summary>
+							<p id="examples-description" data-i18n="examples.description">Choose an example to fill your draft. Nothing starts until you submit it.</p>
+							<p class="example-mode-note" data-i18n="examples.modes">Demo shows the same four generic simulated steps for every goal: no browsing or AI. Live needs verified activation, a configured provider, and a local browser; provider charges may apply.</p>
+							<div id="example-grid" class="example-grid" role="group" aria-describedby="examples-description"></div>
+						</details>
+						<div class="suggestions">
+							<span data-i18n="suggestions.label">Or try with</span
+							><button
+								type="button"
+								data-prompt="Query our RAG workspace for Q2 Service SLA terms and return strict document citations"
+								data-i18n="suggestions.idea"
+								data-i18n-prompt="suggestions.ideaPrompt"
+							>
+								↗ Query RAG Workspace</button
+							><button
+								type="button"
+								data-prompt="Run 5-node workflow: qualify inbound agency lead, check pricing PDF, and draft CRM proposal"
+								data-i18n="suggestions.compare"
+								data-i18n-prompt="suggestions.comparePrompt"
+							>
+								⇄ Run 5-Node Workflow</button
+							><button
+								type="button"
+								data-prompt="Execute scoped Read-Only MCP query on PostgreSQL analytics view and summarize weekly KPIs"
+								data-i18n="suggestions.resources"
+								data-i18n-prompt="suggestions.resourcesPrompt"
+							>
+								⊞ Run MCP Tool Call
+							</button>
+						</div>
+					</section>
+					<section class="recent-section">
+						<div class="section-heading">
+							<div>
+								<span class="section-index">02 /</span>
+								<h2 data-i18n="recent.title">Tus últimos recorridos</h2>
+							</div>
+							<a
+								href="#misiones"
+								class="inline-link"
+								data-i18n="recent.viewAll"
+								>Ver todas las misiones <span>↗</span></a
+							>
+						</div>
+						<div id="recent-missions"></div>
+					</section>
+					<section class="principles">
+						<div>
+							<span data-icon="orbit"></span
+							><strong data-i18n="principles.oneTitle"
+								>Una idea, un recorrido</strong
+							>
+							<p data-i18n="principles.oneBody">
+								Del objetivo al resultado, con cada paso a la vista.
+							</p>
+						</div>
+						<div>
+							<span data-icon="shield"></span
+							><strong data-i18n="principles.twoTitle"
+								>Tu espacio, tus conexiones</strong
+							>
+							<p data-i18n="principles.twoBody">
+								Historial local y claves en el entorno de tu equipo.
+							</p>
+						</div>
+						<div>
+							<span data-icon="code"></span
+							><strong data-i18n="principles.threeTitle"
+								>Abierto a lo que viene</strong
+							>
+							<p data-i18n="principles.threeBody">
+								Una interfaz propia sobre un motor de código abierto.
+							</p>
+						</div>
+					</section>
+				</section>
+				<!-- NEW VIEW: AI Chat & Docs (RAG) -->
+				<section id="view-chat" class="view" hidden>
+					<div class="view-title">
+						<div>
+							<span class="eyebrow">CITATION-GROUNDED RAG WORKSPACE</span>
+							<h1 id="chat-ws-heading">Customer Support 24/7<span>.</span></h1>
+							<p id="chat-ws-sub">
+								Active thread: <strong id="chat-thread-name">General Inquiries</strong> · Strict chunk-level citations via LanceDB.
+							</p>
+						</div>
+						<span class="status-pill completed" id="chat-guard-badge">● VERIFIED_SOURCE_ONLY</span>
+					</div>
+					<div class="rag-layout">
+						<div class="rag-chat-panel">
+							<div class="rag-messages" id="rag-messages" aria-live="polite"></div>
+							<form id="rag-chat-form" class="rag-input-bar">
+								<input
+									type="text"
+									id="rag-chat-input"
+									placeholder="Ask a question grounded in this workspace's documents..."
+									autocomplete="off"
+									required
+								/>
+								<button type="submit" class="button primary">
+									Send <span data-icon="arrow"></span>
+								</button>
+							</form>
+						</div>
+						<aside class="rag-docs-panel" aria-label="Workspace documents">
+							<div class="rag-docs-header">
+								<span class="card-number">INDEXED DOCUMENTS</span>
+								<span class="ws-badge" id="rag-doc-count">3</span>
+							</div>
+							<div class="rag-docs-list" id="rag-docs-list"></div>
+						</aside>
+					</div>
+				</section>
+				<!-- NEW VIEW: CRM & Sales -->
+				<section id="view-crm" class="view" hidden>
+					<div class="view-title">
+						<div>
+							<span class="eyebrow">SOVEREIGN LOCAL CRM &amp; SALES</span>
+							<h1>Pipeline &amp; AI Follow-ups<span>.</span></h1>
+							<p>
+								Qualify leads, manage appointments, and draft citation-backed proposals directly in your local database.
+							</p>
+						</div>
+						<button type="button" class="button primary" id="crm-sync-btn">
+							Sync Channels <span data-icon="orbit"></span>
+						</button>
+					</div>
+					<div class="crm-kpis">
+						<div class="crm-kpi"><span>Active Pipeline</span><strong>$84,500</strong></div>
+						<div class="crm-kpi"><span>Qualified Leads</span><strong>4 Active</strong></div>
+						<div class="crm-kpi"><span>Appointments</span><strong>3 Booked</strong></div>
+						<div class="crm-kpi"><span>AI Drafts Ready</span><strong class="teal-text">100% Local</strong></div>
+					</div>
+					<div class="crm-grid" id="crm-grid"></div>
+					<div class="crm-draft-box" id="crm-draft-box" hidden>
+						<div class="crm-draft-head">
+							<span class="card-number">AI FOLLOW-UP DRAFT · READY FOR APPROVAL</span>
+							<button type="button" class="button secondary" id="crm-copy-draft">Copy Draft</button>
+						</div>
+						<pre id="crm-draft-preview"></pre>
+					</div>
+				</section>
+				<!-- NEW VIEW: AI Agents & MCP Hub -->
+				<section id="view-agents" class="view" hidden>
+					<div class="view-title">
+						<div>
+							<span class="eyebrow">MCP SERVER HUB &amp; AGENT SKILLS</span>
+							<h1>AI Agents &amp; Guardrails<span>.</span></h1>
+							<p>
+								Enforce deterministic Read-Only, Draft Only, and Scoped Write permissions across every Model Context Protocol server.
+							</p>
+						</div>
+					</div>
+					<div class="agents-grid" id="agents-grid"></div>
+				</section>
+				<section id="view-misiones" class="view" hidden>
+					<div class="view-title">
+						<div>
+							<span class="eyebrow" data-i18n="missions.eyebrow"
+								>VISUAL WORKFLOWS &amp; RUN HISTORY</span
+							>
+							<h1 data-i18n-html="missions.titleHtml">
+								5-Node Agent Workflows<span>.</span>
+							</h1>
+							<p data-i18n="missions.subtitle">
+								Chain Trigger, Vector Retrieval, LLM Reasoning, Tool/API Action, and Structured Output with full local audit logs.
+							</p>
+						</div>
+						<button
+							type="button"
+							id="run-5node-btn"
+							class="button primary"
+						>
+							Run 5-Node Pipeline <span data-icon="arrow"></span>
+						</button>
+					</div>
+					<div class="pipeline-strip" aria-label="5-Node Visual Workflow Pipeline">
+						<div class="pipe-node">
+							<span class="pipe-step">01</span>
+							<strong>Trigger</strong>
+							<small>Webhook · Gmail · Telegram</small>
+						</div>
+						<span class="pipe-arrow">→</span>
+						<div class="pipe-node">
+							<span class="pipe-step">02</span>
+							<strong>Vector Retrieval</strong>
+							<small>LanceDB · Strict Citations</small>
+						</div>
+						<span class="pipe-arrow">→</span>
+						<div class="pipe-node">
+							<span class="pipe-step">03</span>
+							<strong>LLM Reasoning</strong>
+							<small>Multi-LLM Router</small>
+						</div>
+						<span class="pipe-arrow">→</span>
+						<div class="pipe-node">
+							<span class="pipe-step">04</span>
+							<strong>Tool / API Action</strong>
+							<small>MCP Scoped Guardrail</small>
+						</div>
+						<span class="pipe-arrow">→</span>
+						<div class="pipe-node is-accent">
+							<span class="pipe-step">05</span>
+							<strong>Structured Output</strong>
+							<small>Local CRM + Reply</small>
+						</div>
+					</div>
+					<div class="history-toolbar">
+						<label class="search-field"
+							><span data-icon="search"></span
+							><input
+								id="history-search"
+								placeholder="Buscar una misión…"
+								aria-label="Buscar misiones"
+								data-i18n-placeholder="missions.searchPlaceholder"
+								data-i18n-aria-label="missions.searchAria" /></label
+						><select
+							id="history-filter"
+							aria-label="Filtrar por estado"
+							data-i18n-aria-label="missions.filterAria"
+						>
+							<option value="all" data-i18n="missions.filterAll">
+								Todos los estados
+							</option>
+							<option value="running" data-i18n="missions.filterRunning">
+								En marcha
+							</option>
+							<option value="completed" data-i18n="missions.filterCompleted">
+								Completadas
+							</option>
+							<option value="failed" data-i18n="missions.filterFailed">
+								Con errores
+							</option>
+							<option value="cancelled" data-i18n="missions.filterCancelled">
+								Canceladas
+							</option>
+						</select>
+					</div>
+					<div id="all-missions"></div>
+				</section>
+				<section id="view-conexiones" class="view" hidden>
+					<div class="view-title">
+						<div>
+							<span class="eyebrow" data-i18n="connections.eyebrow"
+								>CHANNELS, LLM ROUTING &amp; VAULT</span
+							>
+							<h1 data-i18n-html="connections.titleHtml">
+								Channels &amp; Gateways<span>.</span>
+							</h1>
+							<p data-i18n="connections.subtitle">
+								Connect business channels, configure Multi-LLM providers, and manage your Sponsorware Solana Vault locally.
+							</p>
+						</div>
+					</div>
+					<div class="channels-grid" id="channels-grid"></div>
+					<div class="settings-grid">
+						<section class="settings-card">
+							<span class="card-number" data-i18n="connections.card1Number"
+								>01 / MODELO</span
+							>
+							<h2 data-i18n="connections.card1Title">
+								Tu inteligencia, a elección.
+							</h2>
+							<p data-i18n="connections.card1Body">
+								Elige tu proveedor y escribe el identificador exacto del modelo.
+								La conexión se guarda en este servidor local.
+							</p>
+							<p class="field-hint" data-i18n="commercial.ai">La IA se paga aparte: conecta tu propia clave API y paga el consumo directamente a tu proveedor. No incluye créditos de IA. Con Ollama puedes usar un modelo local compatible sin una API externa de pago.</p>
+							<form id="settings-form">
+								<label
+									for="provider-select"
+									data-i18n="connections.providerLabel"
+									>Proveedor</label
+								><select id="provider-select" required disabled>
+									<option value="" data-i18n="connections.loadingProviders">
+										Cargando proveedores…
+									</option></select
+								><label for="model-input" data-i18n="connections.modelLabel"
+									>Identificador exacto del modelo</label
+								><input
+									id="model-input"
+									required
+									maxlength="200"
+									autocomplete="off"
+									spellcheck="false"
+									placeholder="El nombre de tu modelo, sin modificar"
+									data-i18n-placeholder="connections.modelPlaceholder"
+								/>
+								<div id="base-url-field" hidden>
+									<label
+										for="base-url-input"
+										data-i18n="connections.baseUrlLabel"
+										>Dirección del servicio</label
+									><input
+										id="base-url-input"
+										type="url"
+										maxlength="2000"
+										autocomplete="off"
+										spellcheck="false"
+										placeholder="http://localhost:11434/v1"
+									/>
+									<p class="field-hint" data-i18n="connections.baseUrlHint">
+										URL del endpoint compatible. No incluyas claves, contraseñas
+										ni tokens en la dirección.
+									</p>
+								</div>
+								<p
+									class="field-hint"
+									id="provider-hint"
+									data-i18n="connections.providerHintDefault"
+								>
+									Las claves se configuran en .env o en el entorno del servidor;
+									nunca en este formulario.
+								</p>
+								<div class="settings-actions">
+									<button
+										id="save-connection"
+										type="submit"
+										class="button primary"
+										data-i18n="connections.save"
+									>
+										Guardar conexión <span data-icon="check"></span></button
+									><button
+										id="check-connection"
+										type="button"
+										class="button secondary"
+										disabled
+										data-i18n="connections.check"
+									>
+										Comprobar configuración
+									</button>
+								</div>
+								<p
+									id="saved-connection"
+									class="field-hint"
+									role="status"
+									data-i18n="connections.noneSaved"
+								>
+									Todavía no hay una conexión guardada.
+								</p>
+								<div id="connection-check" aria-live="polite"></div>
+							</form>
+						</section>
+						<section class="settings-card">
+							<span class="card-number" data-i18n="connections.card2Number"
+								>02 / CONEXIONES</span
+							>
+							<h2 data-i18n="connections.card2Title">Listo en tu equipo.</h2>
+							<div id="connection-list"></div>
+							<a
+								href="#guia"
+								class="inline-link"
+								data-i18n="connections.howToKeys"
+								>Cómo configurar las claves ↗</a
+							>
+						</section>
+						<section class="settings-card solana-card" id="solana-contribution-card">
+							<span class="card-number" data-i18n="solana.cardNumber"
+								>03 / SOLANA · DESBLOQUEAR MODO REAL</span
+							>
+							<h2 data-i18n="solana.cardTitle">
+								Contribución en Solana · Modo real
+							</h2>
+							<p data-i18n="solana.cardBody">
+								El modo Demo simulada es 100% gratuito. Para desbloquear las misiones en navegador real, realiza una contribución en la red Solana (mínimo $88 USD en SOL o USDC, sin límite máximo) y verifica la firma de tu transacción.
+							</p>
+							<div class="solana-wallet-box">
+								<div class="solana-wallet-row">
+									<span class="small-label" data-i18n="solana.walletLabel">CARTERA OFICIAL DE SOLANA</span>
+									<span class="status-pill" id="solana-min-badge" data-i18n="solana.minBadge">Mínimo: $88 USD · Sin límite máximo</span>
+								</div>
+								<code id="solana-wallet-address">3HvUMCUSSHEdtA35UuD4J7mbgpTxJ7LgT2X7GfdzvBdm</code>
+								<div class="settings-actions">
+									<button
+										type="button"
+										class="button secondary"
+										id="copy-solana-wallet"
+										data-i18n="solana.copyWallet"
+									>
+										Copiar cartera
+									</button>
+									<a
+										id="solana-pay-link"
+										class="button secondary"
+										href="solana:3HvUMCUSSHEdtA35UuD4J7mbgpTxJ7LgT2X7GfdzvBdm?label=Aurelia%20AI"
+										data-i18n="solana.payLink"
+									>
+										Open in Solana Pay ↗
+									</a>
+								</div>
+								<p class="field-hint">
+									<span data-i18n="solana.memoLabel">Workspace reference code (Optional memo):</span>
+									<strong id="solana-device-code">AU-LOCAL</strong>
+								</p>
+							</div>
+							<form id="solana-verify-form">
+								<label for="solana-signature-input" data-i18n="solana.signatureLabel"
+									>Firma de la transacción de Solana (Transaction Signature / Base58)</label
+								>
+								<input
+									id="solana-signature-input"
+									required
+									maxlength="120"
+									autocomplete="off"
+									spellcheck="false"
+									placeholder="Pega la firma Base58 de tu transacción en Solana (mín. $88 USD)…"
+									data-i18n-placeholder="solana.signaturePlaceholder"
+								/>
+								<div class="settings-actions">
+									<button
+										id="verify-solana-btn"
+										type="submit"
+										class="button primary"
+										data-i18n="solana.verifyButton"
+									>
+										Verificar contribución en Solana <span data-icon="check"></span>
+									</button>
+								</div>
+								<p
+									id="solana-verify-status"
+									class="field-hint"
+									role="status"
+									data-i18n="solana.statusPending"
+								>
+									Estado: Pendiente de verificación (Demo simulada disponible gratis).
+								</p>
+							</form>
+						</section>
+						<section class="settings-card privacy-card">
+							<span data-icon="shield"></span>
+							<div>
+								<h2 data-i18n="connections.privacyTitle">
+									100% Local Data Ownership.
+								</h2>
+								<p data-i18n="connections.privacyBody">
+									API keys stay strictly in your server environment. Vector embeddings (LanceDB, Qdrant, pgvector), CRM leads, and workflow logs live on your own machine. Telemetry is disabled by default in Aurelia AI.
+								</p>
+							</div>
+						</section>
+					</div>
+				</section>
+				<section id="view-guia" class="view" hidden>
+					<div class="view-title">
+						<div>
+							<span class="eyebrow" data-i18n="guide.eyebrow"
+								>3-TIER SELF-HOSTED ARCHITECTURE · v1.19.0</span
+							>
+							<h1 data-i18n-html="guide.titleHtml">
+								Deploy Aurelia AI<span>.</span>
+							</h1>
+							<p data-i18n="guide.subtitle">
+								Run Frontend (:3000), API / RAG / MCP Server (:3001), and Document Collector (:8888) on your own infrastructure.
+							</p>
+						</div>
+					</div>
+					<div class="guide-grid">
+						<article class="guide-card" id="pro-offer" aria-labelledby="pro-title">
+							<h2 id="pro-title" data-i18n="commercial.title">Sponsorware Vault · annoris/aurelia-pro-source</h2>
+							<p data-i18n="commercial.terms">Explore Aurelia AI free in the Interactive Sandbox and public showcase. Sponsor via the official Solana Mainnet Vault (from $88 USD in SOL or USDC) to unlock full commercial access to annoris/aurelia-pro-source.</p>
+							<p data-i18n="commercial.ai">Bring your own LLM keys (OpenAI, Anthropic, Gemini, Bedrock, Groq) or run 100% private local models with Ollama &amp; LM Studio — zero cloud lock-in.</p>
+							<p class="field-hint" data-i18n="commercial.status">Solana Mainnet Vault: 3HvUMCUSSHEdtA35UuD4J7mbgpTxJ7LgT2X7GfdzvBdm · Verify your signature in Connections.</p>
+							<div class="hero-actions" style="margin-top: 14px;">
+								<a href="https://annoris.github.io/aurelia/" target="_blank" rel="noopener noreferrer" class="button primary">Launch Interactive Sandbox ↗</a>
+								<a href="https://github.com/annoris/aurelia" target="_blank" rel="noopener noreferrer" class="button secondary">GitHub Repository ↗</a>
+							</div>
+						</article>
+						<article class="guide-card">
+							<span class="card-number" data-i18n="guide.card1Number"
+								>01 / INTERACTIVE SANDBOX</span
+							>
+							<h2 data-i18n="guide.card1Title">Try RAG &amp; Workflows with zero setup.</h2>
+							<p data-i18n-html="guide.card1Body">
+								In Overview, run any prompt in <strong>Simulated Demo</strong> mode to test RAG citations, 5-node workflows, MCP guardrails, and CRM drafts — or open the hosted Interactive Sandbox.
+							</p>
+							<a href="https://annoris.github.io/aurelia/" target="_blank" rel="noopener noreferrer" class="inline-link" data-i18n="guide.card1Link"
+								>Open Interactive Sandbox ↗</a
+							>
+						</article>
+						<article class="guide-card">
+							<span class="card-number" data-i18n="guide.card2Number"
+								>02 / 3-TIER STACK</span
+							>
+							<h2 data-i18n="guide.card2Title">frontend :3000 · server :3001 · collector :8888</h2>
+							<p data-i18n-html="guide.card2Body">
+								Deploy all three decoupled tiers via Docker Compose or bare-metal Node.js. Configure your preferred LLM provider in <code>.env</code> and select LanceDB, Qdrant, or pgvector.
+							</p>
+							<pre data-i18n="guide.card2Code">
+# Frontend :3000 | API/RAG/MCP :3001 | Collector :8888
+docker compose up -d --build</pre
+							>
+							<a
+								href="#conexiones"
+								class="inline-link"
+								data-i18n="guide.card2Link"
+								>Configure LLM &amp; MCP ↗</a
+							>
+						</article>
+						<article class="guide-card">
+							<span class="card-number" data-i18n="guide.card3Number"
+								>03 / MCP &amp; CHANNELS</span
+							>
+							<h2 data-i18n="guide.card3Title">Guarded automation across every channel.</h2>
+							<p data-i18n-html="guide.card3Body1">
+								Connect <strong>Google Drive, HubSpot, Telegram, Gmail, Outlook</strong> and embeddable web widgets with strict <strong>Read-Only / Draft Only / Scoped Write</strong> MCP policies.
+							</p>
+							<p data-i18n="guide.card3Body2">
+								Every tool call and citation is audited locally in SQLite or PostgreSQL for SMBs, agencies, clinics, e-commerce, and enterprise operations.
+							</p>
+						</article>
+						<article class="guide-card">
+							<span class="card-number" data-i18n="guide.card4Number"
+								>04 / LICENSE &amp; GITHUB</span
+							>
+							<h2 data-i18n="guide.card4Title">
+								Aurelia AI v1.19.0 · Open Showcase.
+							</h2>
+							<p data-i18n="guide.card4Body">
+								Copyright © 2026 Aurelia AI. Public showcase and documentation hosted at github.com/annoris/aurelia. Full self-hosted 3-tier source code available via annoris/aurelia-pro-source.
+							</p>
+							<a href="https://github.com/annoris/aurelia" target="_blank" rel="noopener noreferrer" class="inline-link">github.com/annoris/aurelia ↗</a>
+						</article>
+					</div>
+				</section>
+				<footer>
+					<span
+						>aurelia<span class="brand-dot">.</span>
+						<span class="footer-tag" data-i18n="footer.tag"
+							>PUT YOUR BUSINESS KNOWLEDGE TO WORK WITH FULL CONTROL.</span
+						></span
+					><a href="https://github.com/annoris/aurelia" target="_blank" rel="noopener noreferrer" data-i18n="footer.link"
+						>Aurelia AI v1.19.0 · GitHub ↗</a
+					>
+				</footer>
+			</main>
+		</div>
+		<dialog id="mission-dialog" aria-labelledby="detail-title">
+			<div class="detail-top">
+				<span class="eyebrow" id="detail-mode" data-i18n="detail.modeDefault"
+					>MISIÓN</span
+				><button
+					class="icon-button"
+					id="close-detail"
+					aria-label="Cerrar detalles"
+					data-i18n-aria-label="detail.closeAria"
+				>
+					<span data-icon="close"></span>
+				</button>
+			</div>
+			<h2 id="detail-title"></h2>
+			<div id="detail-meta"></div>
+			<div id="detail-steps" class="timeline"></div>
+			<div id="detail-result" class="result-box" hidden></div>
+			<div class="detail-actions">
+				<button
+					class="button secondary"
+					id="copy-result"
+					data-i18n="detail.copy"
+				>
+					Copiar resultado</button
+				><button
+					class="button secondary"
+					id="download-result"
+					data-i18n="detail.download"
+				>
+					Descargar</button
+				><button
+					class="button danger"
+					id="cancel-mission"
+					data-i18n="detail.cancel"
+				>
+					Cancelar misión</button
+				><button
+					class="button danger"
+					id="delete-mission"
+					data-i18n="detail.delete"
+				>
+					Eliminar del historial
+				</button>
+			</div>
+		</dialog>
+		<div id="toast" role="status" aria-live="polite"></div>
+		<script src="./i18n.js" defer></script>
+		<script src="./app.js" defer></script>
+	</body>
+</html>
